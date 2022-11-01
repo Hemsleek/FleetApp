@@ -6,6 +6,7 @@ import {
 
 export const CContainer = styled.View`
   flex-grow: 1;
+  background-color: ${(props) => props.theme.color.bg};
 `;
 
 export const FlexRow = styled.View`

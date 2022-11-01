@@ -12,6 +12,7 @@ export const appThemes = {
     marineBlue: "#A6AFBD",
     navyBlue: "#0B162F",
     bg: "#0F172A",
+    border: "#112147",
   },
   font: {
     large: "24px",
