@@ -15,16 +15,19 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/94e036ed-81b6-4033-bec8-29911ae376cf"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "permissions": [
+          "ACCESS_COARSE_LOCATION",
+          "ACCESS_FINE_LOCATION",
+          "FOREGROUND_SERVICE"
+        ]
       },
       "package": "com.hemsleeksample.fleet"
     },
