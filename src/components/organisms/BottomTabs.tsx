@@ -13,7 +13,7 @@ import LocationScreen from "../../screens/Location";
 
 const BottomNav = () => {
   const {
-    color: { border, neonGreen, navyBlue },
+    color: { border, navyBlue },
   } = useTheme();
   const [index, setIndex] = useState(0);
   const [routes] = useState([{ key: "users" }, { key: "location" }]);
@@ -37,7 +37,7 @@ const BottomNav = () => {
         borderTopWidth: 1,
         borderTopColor: border,
       }}
-      activeColor="rgba(0,0,0,0.1)"
+      activeColor={navyBlue}
       renderIcon={({ route, focused }) => (
         <RenderIcon route={route} focused={focused} />
       )}

@@ -9,7 +9,8 @@ import {
 import { CContainer } from "../theme/style.component";
 import Header from "../components/molecules/Header";
 import LocationBox from "../components/atoms/LocationBox";
-import Loader from "../components/atoms/Loader";
+import { useDispatch } from "react-redux";
+import { startLoading } from "../store/loaderReducer";
 
 const Container = styled(CContainer)``;
 const Main = styled.View`
@@ -21,13 +22,17 @@ const Spacer = styled.View`
 `;
 
 const Location = () => {
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <Header
         title="my location"
         text="reload"
         iconName="reload"
-        onReload={() => {}}
+        onReload={() => {
+          // dispatch(startLoading());
+        }}
       />
       <Main>
         <LocationBox title="my latitude" value="10,0000" />
