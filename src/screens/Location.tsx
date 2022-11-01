@@ -28,29 +28,27 @@ const LocationComp = () => {
   const [location, setLocation] = useState<any>(defaultLocation);
   const [status, requestPermission] = Location.useForegroundPermissions();
 
-  const getLocation = useCallback(() => {
-    (async () => {
-      try {
-        dispatch(startLoading());
-        if (status?.granted === false) {
-          let { status: currentStatus } = await requestPermission();
-          if (currentStatus !== "granted") {
-            setLocation(defaultLocation);
-            return;
-          } else {
-            let _location = await Location.getCurrentPositionAsync({});
-            setLocation(_location);
-          }
+  const getLocation = async () => {
+    try {
+      dispatch(startLoading());
+      if (status?.granted === false) {
+        let { status: currentStatus } = await requestPermission();
+        if (currentStatus !== "granted") {
+          setLocation(defaultLocation);
+          return;
         } else {
           let _location = await Location.getCurrentPositionAsync({});
           setLocation(_location);
         }
-      } catch (error) {
-      } finally {
-        dispatch(stopLoading());
+      } else {
+        let _location = await Location.getCurrentPositionAsync({});
+        setLocation(_location);
       }
-    })();
-  }, []);
+    } catch (error) {
+    } finally {
+      dispatch(stopLoading());
+    }
+  };
 
   useEffect(() => {
     (async () => {
