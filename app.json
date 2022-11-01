@@ -15,7 +15,9 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/94e036ed-81b6-4033-bec8-29911ae376cf"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -23,7 +25,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.hemsleeksample.fleet"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +34,11 @@
     "owner": "fleet-test",
     "runtimeVersion": {
       "policy": "sdkVersion"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "94e036ed-81b6-4033-bec8-29911ae376cf"
+      }
     }
   }
 }
