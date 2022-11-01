@@ -10,6 +10,7 @@ import { CContainer } from "../theme/style.component";
 import Header from "../components/molecules/Header";
 import UsersCard from "../components/molecules/UsersCard";
 import { defaultUsersData } from "../data";
+import { useGetUsers } from "../utils/hooks";
 
 const Container = styled(CContainer)`
   padding-bottom: ${hp(1.499)}px;
@@ -32,15 +33,17 @@ const Spacer = styled.View<{ isSpacer: boolean }>`
 // const Container = styled.View``;
 
 const Users = () => {
+  const { users } = useGetUsers();
+
   return (
     <Container>
-      <Header title="user collection" text="8 users" />
+      <Header title="user collection" text={`${users.length} users`} />
       <Main>
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 180 }}
         >
-          {defaultUsersData.map((item: any, itemIndex: number) => (
+          {users.map((item: any, itemIndex: number) => (
             <Spacer key={itemIndex} isSpacer={itemIndex !== 0}>
               <UsersCard {...item} />
             </Spacer>

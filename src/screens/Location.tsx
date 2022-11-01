@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 
 import styled, { css } from "styled-components/native";
@@ -46,13 +45,10 @@ const LocationComp = () => {
         setLocation(_location);
       }
     } catch (error) {
-      console.log({ error });
     } finally {
       dispatch(stopLoading());
     }
   }, []);
-
-  console.log({ location });
 
   useEffect(() => {
     (async () => {

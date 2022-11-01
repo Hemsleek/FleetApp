@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import styled, { css } from "styled-components/native";
 import {
@@ -38,22 +38,32 @@ const OrdersText = styled.Text`
 `;
 
 type TUsersProps = {
-  name: string;
-  ordersCompleted: number;
-  img: any;
+  fullName: string;
+  orders: Array<Object>;
+  avatar: any;
 };
 
-const UsersCard = ({ name, ordersCompleted, img }: TUsersProps) => {
+const UsersCard = ({ fullName, orders = [], avatar }: TUsersProps) => {
+  const ordersCompleted = useMemo(
+    () => orders.filter((order: any) => order.isCompleted).length,
+    [orders]
+  );
+
   return (
     <Container>
       <ImageWrapper>
         <Image
-          source={img}
-          style={{ resizeMode: "contain", width: "100%", height: "100%" }}
+          source={{ uri: avatar }}
+          style={{
+            resizeMode: "contain",
+            width: "100%",
+            height: "100%",
+            borderRadius: 100,
+          }}
         />
       </ImageWrapper>
       <TextWrapper>
-        <FullName>{name}</FullName>
+        <FullName>{fullName}</FullName>
         <OrdersText>{ordersCompleted} Orders Completed</OrdersText>
       </TextWrapper>
       <ArrowForward />
