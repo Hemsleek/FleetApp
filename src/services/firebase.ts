@@ -33,31 +33,8 @@ const authenticateUserAnonymously = async () => {
   } catch (error: any) {}
 };
 
-const signOutAnonymously = async () => {
-  try {
-    auth.currentUser?.delete();
-    await signOut(auth);
-  } catch (error: any) {}
-};
-
 const collectionRef = collection(db, "usersCollection");
 
 const query = q(collectionRef, orderBy("createdAt", "desc"));
 
-const writeNewMessage = async (id: string, data: Object) => {
-  if (!id) return;
-
-  const userRef = doc(db, "supportChat", id);
-  try {
-    await setDoc(userRef, data, { merge: true });
-  } catch (error: any) {}
-};
-export {
-  db,
-  auth,
-  collectionRef,
-  query,
-  authenticateUserAnonymously,
-  signOutAnonymously,
-  writeNewMessage,
-};
+export { db, auth, collectionRef, query, authenticateUserAnonymously };

@@ -27,6 +27,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "owner": "fleet-test"
+    "owner": "fleet-test",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }
