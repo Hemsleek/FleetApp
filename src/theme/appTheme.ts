@@ -9,7 +9,6 @@ export const appThemes = {
     neonGreen: "#4AE551",
     offWhite: "#E2E2E2",
     fleetGrey: "#A6AFBD",
-    marineBlue: "#A6AFBD",
     navyBlue: "#0B162F",
     bg: "#0F172A",
     border: "#112147",

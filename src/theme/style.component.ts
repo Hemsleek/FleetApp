@@ -17,15 +17,3 @@ export const FlexRow = styled.View`
 export const FlexRowJustifyBetween = styled(FlexRow)`
   justify-content: space-between;
 `;
-
-export const ButtonText = styled.Text<{ color?: string }>`
-  font-weight: 500;
-  font-size: 13px;
-  color: #fff;
-
-  ${(props) =>
-    props.color &&
-    css`
-      color: ${props.color};
-    `}
-`;
