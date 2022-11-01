@@ -21,7 +21,7 @@ const ImageWrapper = styled.View`
 const TextWrapper = styled.View`
   flex-grow: 1;
   margin-horizontal: ${wp(3.2)}px;
-  justify-content: :'center';
+  justify-content: center;
 `;
 const FullName = styled.Text`
   font-weight: 500;

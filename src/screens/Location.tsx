@@ -9,6 +9,7 @@ import {
 import { CContainer } from "../theme/style.component";
 import Header from "../components/molecules/Header";
 import LocationBox from "../components/atoms/LocationBox";
+import Loader from "../components/atoms/Loader";
 
 const Container = styled(CContainer)``;
 const Main = styled.View`
@@ -18,7 +19,6 @@ const Main = styled.View`
 const Spacer = styled.View`
   margin-top: ${hp(2.4)}px;
 `;
-// const Container = styled.View``;
 
 const Location = () => {
   return (

@@ -4,6 +4,9 @@ declare module "styled-components" {
   export interface DefaultTheme extends ThemeType {}
 }
 
+// width= 375px
+// height= 667px
+
 export const appThemes = {
   color: {
     neonGreen: "#4AE551",

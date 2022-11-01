@@ -37,7 +37,7 @@ const BottomNav = () => {
         borderTopWidth: 1,
         borderTopColor: border,
       }}
-      activeColor={neonGreen}
+      activeColor="rgba(0,0,0,0.1)"
       renderIcon={({ route, focused }) => (
         <RenderIcon route={route} focused={focused} />
       )}

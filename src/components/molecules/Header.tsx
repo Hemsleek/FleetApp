@@ -6,7 +6,6 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import { FlexRowJustifyBetween } from "../../theme/style.component";
-import RenderIcon from "../atoms/RenderIcon";
 import RenderAppIcon, { TIconName } from "../atoms/RenderAppIcon";
 
 const Container = styled(FlexRowJustifyBetween)`
