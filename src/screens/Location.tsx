@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import styled, { css } from "styled-components/native";
 import {
@@ -10,7 +10,8 @@ import { CContainer } from "../theme/style.component";
 import Header from "../components/molecules/Header";
 import LocationBox from "../components/atoms/LocationBox";
 import { useDispatch } from "react-redux";
-import { startLoading } from "../store/loaderReducer";
+import { startLoading, stopLoading } from "../store/loaderReducer";
+import * as Location from "expo-location";
 
 const Container = styled(CContainer)``;
 const Main = styled.View`
@@ -21,8 +22,47 @@ const Spacer = styled.View`
   margin-top: ${hp(2.4)}px;
 `;
 
-const Location = () => {
+const defaultLocation = { coords: { longitude: 0, latitude: 0 } };
+
+const LocationComp = () => {
   const dispatch = useDispatch();
+  const [location, setLocation] = useState<any>(defaultLocation);
+  const [status, requestPermission] = Location.useForegroundPermissions();
+
+  const getLocation = useCallback(async () => {
+    try {
+      dispatch(startLoading());
+      if (status?.granted === false) {
+        let { status: currentStatus } = await requestPermission();
+        if (currentStatus !== "granted") {
+          setLocation(defaultLocation);
+          return;
+        } else {
+          let _location = await Location.getCurrentPositionAsync({});
+          setLocation(_location);
+        }
+      } else {
+        let _location = await Location.getCurrentPositionAsync({});
+        setLocation(_location);
+      }
+    } catch (error) {
+      console.log({ error });
+    } finally {
+      dispatch(stopLoading());
+    }
+  }, []);
+
+  console.log({ location });
+
+  useEffect(() => {
+    (async () => {
+      await getLocation();
+    })();
+
+    return () => {
+      setLocation(defaultLocation);
+    };
+  }, []);
 
   return (
     <Container>
@@ -30,17 +70,15 @@ const Location = () => {
         title="my location"
         text="reload"
         iconName="reload"
-        onReload={() => {
-          // dispatch(startLoading());
-        }}
+        onReload={async () => await getLocation()}
       />
       <Main>
-        <LocationBox title="my latitude" value="10,0000" />
+        <LocationBox title="my latitude" value={location.coords.latitude} />
         <Spacer />
-        <LocationBox title="my longitude" value="10,0000" />
+        <LocationBox title="my longitude" value={location.coords.longitude} />
       </Main>
     </Container>
   );
 };
 
-export default Location;
+export default LocationComp;
